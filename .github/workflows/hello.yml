@@ -1,0 +1,14 @@
+# workflow= file which store instructions or steps for ci/cd
+
+
+name: My First Workflow
+
+on: push
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+  steps:
+  - name: Print message
+    run: echo "Hello,GitHub Actions!"
