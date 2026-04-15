@@ -12,3 +12,11 @@ jobs:
 
       - name: Print Date
         run: date
+  
+  say-bye:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print message
+        run: echo "Goodbye from second job" 
+
