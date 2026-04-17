@@ -1,22 +1,19 @@
-name: My First Workflow
+name: PR-Check
 
-on: push
+on: pull_request  
 
 jobs:
-  say-hello:
+  check-code:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print message
-        run: echo "Hello, GitHub Actions!"
+      - name: Greet
+        run: echo "New PR ,CHECK START!"
 
-      - name: Print Date
+      - name: Time Check
         run: date
-  
-  say-bye:
+
+  final-job:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print message
-        run: echo "Goodbye from second job" 
-
+      - name: Bye
+        run: echo "PR check khatam."
