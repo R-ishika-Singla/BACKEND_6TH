@@ -1,22 +1,25 @@
-name: My First Workflow
+name: 2nd-workflow
 
-on: push
+# 'on' hamesha lower case mein hota hai aur 'Push' ki jagah 'push'
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
-  say-hello:
+  run-test:
+    # 'runs-on' (plural) hota hai
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print message
-        run: echo "Hello, GitHub Actions!"
+      - name: Running Tests
+        run: echo "test is running"
+        
+      - name: Test Status
+        run: echo "test successful"
 
-      - name: Print Date
-        run: date
-  
-  say-bye:
+  # Deploy job tabhi chalna chahiye jab test success ho
+  deploy-app:
+    needs: run-test
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print message
-        run: echo "Goodbye from second job" 
-
+      - name: Deploying
+        run: echo "Deploying the application..."
