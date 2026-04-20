@@ -1,25 +1,32 @@
-name: 2nd-workflow
+# name: 2nd-workflow
 
-# 'on' hamesha lower case mein hota hai aur 'Push' ki jagah 'push'
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  run-test:
-    # 'runs-on' (plural) hota hai
-    runs-on: ubuntu-latest
-    steps:
-      - name: Running Tests
-        run: echo "test is running"
+# jobs:
+#   run-test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Running Tests
+#         run: echo "test is running"
         
-      - name: Test Status
-        run: echo "test successful"
+#       - name: Test Status
+#         run: echo "test successful"
 
-  # Deploy job tabhi chalna chahiye jab test success ho
-  deploy-app:
-    needs: run-test
+#   deploy-app:
+#     needs: run-test
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Deploying
+#         run: echo "Deploying the application..."
+jobs:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Deploying
-        run: echo "Deploying the application..."
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: ls
