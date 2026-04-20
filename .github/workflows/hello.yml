@@ -1,25 +1,26 @@
-# name: 2nd-workflow
-
-# on:
-#   push:
-#     branches: [ "main" ]
-
 # jobs:
-#   run-test:
+#   test:
 #     runs-on: ubuntu-latest
-#     steps:
-#       - name: Running Tests
-#         run: echo "test is running"
-        
-#       - name: Test Status
-#         run: echo "test successful"
 
-#   deploy-app:
-#     needs: run-test
-#     runs-on: ubuntu-latest
 #     steps:
-#       - name: Deploying
-#         run: echo "Deploying the application..."
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: List files
+#         run: ls
+
+
+# steps:
+#  -name: Chekoutcode
+#  uses:actions/checkout@v4
+
+#  -name: Setup Node
+#  uses: action/setup-node@v4
+#  with:
+#  node-version: 18
+#  -name:Check Node version 
+#  run:node -v 
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -27,6 +28,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Check Node version
+        run: node -v
+
+      - name: Check NPM version
+        run: npm -v
 
       - name: List files
         run: ls
