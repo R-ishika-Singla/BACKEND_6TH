@@ -4,17 +4,31 @@ on: [push]
 
 jobs:
   job1:
-    runs-on: ubuntu-latest 
-    
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Create hello file
-        run: echo "Hello world, this is me" > file.txt
+        run: echo "Hello world, this is my file!" > file.txt
 
-      - name: Upload my file
+      - name: Upload File
         uses: actions/upload-artifact@v4
         with:
           name: my-file
           path: file.txt
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download File
+        uses: actions/download-artifact@v4
+        with:
+          name: my-file
+
+      - name: Read File Content
+        run: cat file.txt
