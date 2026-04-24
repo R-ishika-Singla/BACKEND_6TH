@@ -1,44 +1,20 @@
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
+name: My First Automation
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: List files
-#         run: ls
-
-
-# steps:
-#  -name: Chekoutcode
-#  uses:actions/checkout@v4
-
-#  -name: Setup Node
-#  uses: action/setup-node@v4
-#  with:
-#  node-version: 18
-#  -name:Check Node version 
-#  run:node -v 
+on: [push]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
+  job1:
+    runs-on: ubuntu-latest 
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Create hello file
+        run: echo "Hello world, this is me" > file.txt
+
+      - name: Upload my file
+        uses: actions/upload-artifact@v4
         with:
-          node-version: 18
-
-      - name: Check Node version
-        run: node -v
-
-      - name: Check NPM version
-        run: npm -v
-
-      - name: List files
-        run: ls
+          name: my-file
+          path: file.txt
