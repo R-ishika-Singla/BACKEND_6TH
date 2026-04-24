@@ -5,9 +5,5 @@
   "scripts": {
     "test": "echo \"No tests yet\" && exit 0",
     "lint": "echo \"No linting yet\" && exit 0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  }
 }
